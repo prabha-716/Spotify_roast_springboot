@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Top Artists</title>
+    <style>
+        body { font-family: Arial; background:#121212; color:white; }
+        .container { width:800px; margin:auto; }
+        .artist {
+            display:flex; align-items:center;
+            background:#1DB954; margin:10px;
+            padding:10px; border-radius:10px;
+        }
+        .artist img { width:80px; height:80px; margin-right:20px; border-radius:50%; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Your Top Artists</h1>
+    <div th:each="artist : ${artists}" class="artist">
+
+        <img th:if="${artist['images'] != null and !#lists.isEmpty(artist['images'])}"
+             th:src="${artist['images'][0]['url']}" />
+
+        <div>
+            <h3 th:text="${artist['name']}"></h3>
+
+            <p th:if="${artist['genres'] != null and !#lists.isEmpty(artist['genres'])}"
+               th:text="${artist['genres'][0]}"></p>
+            <p th:unless="${artist['genres'] != null and !#lists.isEmpty(artist['genres'])}">
+                Genre unknown
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
