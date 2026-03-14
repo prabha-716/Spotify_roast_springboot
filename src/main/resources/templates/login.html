@@ -1,12 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Roaster — Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:   #f0faf3;
+            --card: #f9fefc;
+            --ink:  #0a1f12;
+            --mid:  #4a7a5a;
+            --line: #c4e8d0;
+            --green: #1DB954;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Instrument Sans', sans-serif;
+            padding: 1.5rem;
+        }
+
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 0;
+        }
+
+        .card {
+            position: relative; z-index: 1;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 3rem 2.8rem;
+            width: 100%;
+            max-width: 380px;
+            animation: appear .45s ease both;
+        }
+
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .mark {
+            font-size: 1.5rem;
+            margin-bottom: 1.6rem;
+            display: block;
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--ink);
+            line-height: 1.15;
+            margin-bottom: .5rem;
+        }
+
+        .desc {
+            font-size: .82rem;
+            color: var(--mid);
+            line-height: 1.6;
+            margin-bottom: 2.2rem;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .6rem;
+            width: 100%;
+            padding: .8rem 1.2rem;
+            background: var(--green);
+            color: #fff;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: .82rem;
+            font-weight: 500;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+            transition: opacity .18s;
+        }
+        .btn:hover { opacity: .82; }
+        .btn:active { opacity: .65; }
+        .btn svg { flex-shrink: 0; }
+
+        .rule {
+            border: none;
+            border-top: 1px solid var(--line);
+            margin: 1.8rem 0 1.4rem;
+        }
+
+        .note {
+            font-size: .72rem;
+            color: var(--mid);
+            text-align: center;
+            line-height: 1.7;
+        }
+        .note a { color: var(--mid); text-decoration: underline; text-underline-offset: 2px; }
+        .note a:hover { color: var(--ink); }
+    </style>
+</head>
 <body>
+<div class="card">
+    <span class="mark">🔥</span>
 
-<h2>Login</h2>
+    <h1 class="title">Welcome to<br/>Roaster.</h1>
+    <p class="desc">Connect your Spotify to get your music roasted — no mercy, no sugarcoating.</p>
 
-<a href="/oauth2/authorization/spotify">
-    Login with Spotify
-</a>
+    <a href="/oauth2/authorization/spotify" class="btn">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 0 1-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 1 1-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.624.624 0 0 1 .207.857zm1.223-2.722a.78.78 0 0 1-1.072.257C14.3 12.266 10.95 11.85 7.8 12.757a.78.78 0 0 1-.448-1.492c3.563-1.07 7.39-.551 10.201 1.165a.78.78 0 0 1 .256 1.272zm.105-2.835C14.692 9.098 9.375 8.923 6.31 9.858a.936.936 0 1 1-.543-1.79c3.532-1.073 9.404-.866 13.115 1.337a.937.937 0 0 1-.968 1.602z" fill="white"/>
+        </svg>
+        Continue with Spotify
+    </a>
 
+    <hr class="rule"/>
+</div>
 </body>
 </html>
