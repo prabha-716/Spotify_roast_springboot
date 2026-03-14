@@ -1,15 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spotify Roaster</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+
+        body {
+            font-family: 'DM Sans', Arial;
+            background: #121212;
+            color: white;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            color: #1DB954;
+            margin-bottom: 0.2em;
+        }
+
+        p {
+            color: #aaaaaa;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .btn-roast {
+            background: #1DB954;
+            color: #000;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+            width: fit-content;
+            margin: 0 auto 20px auto;
+        }
+
+        .links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #333;
+            color: #aaa;
+            font-size: 0.85rem;
+            padding: 10px 24px;
+        }
+
+        .btn-outline:hover {
+            border-color: #1DB954;
+            color: #1DB954;
+        }
+
+        .fire {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
 <body>
+<div class="container">
+    <div class="fire">🔥</div>
+    <h1>Spotify Roaster</h1>
+    <p>We'll judge your music taste so hard it hurts.</p>
 
-<h2>Dashboard</h2>
+    <!-- THE ROAST BUTTON -->
+    <a href="/spotify/roast" class="btn btn-roast">🎤 Roast Me</a>
 
-<p>Name: [[${name}]]</p>
-<p>Email: [[${email}]]</p>
-<a href="/spotify/top-tracks">View My Top Tracks</a>
-<a href="/spotify/saved-tracks">View My Saved Tracks</a>
-<a href="/spotify/top-artists">View My Top Tracks</a>
-<a href="/logout">Logout</a>
-
+    <!-- Optional: explore your data first -->
+    <div class="links">
+        <a href="/spotify/top-tracks" class="btn btn-outline">Top Tracks</a>
+        <a href="/spotify/top-artists" class="btn btn-outline">Top Artists</a>
+        <a href="/spotify/saved-tracks" class="btn btn-outline">Saved Tracks</a>
+    </div>
+</div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.example.spotify_roast.Controller;
 
+import com.example.spotify_roast.Service.GeminiService;
 import com.example.spotify_roast.Service.SpotifyService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -17,9 +18,11 @@ import java.util.Map;
 @RequestMapping("/spotify")
 public class SpotifyController {
     private final SpotifyService spotifyService;
+    private final GeminiService geminiService;
 
-    public SpotifyController(SpotifyService spotifyService){
+    public SpotifyController(SpotifyService spotifyService,GeminiService geminiService){
         this.spotifyService = spotifyService;
+        this.geminiService = geminiService;
     }
 
     @GetMapping("/top-tracks")
@@ -50,5 +53,12 @@ public class SpotifyController {
         return spotifyService.buildRoastPrompt(user);
     }
 
+    @GetMapping("/roast")
+    public String getRoast(Model model,@AuthenticationPrincipal OAuth2User user){
+        String spotifyData = getRoastData(user);
+        String roast = geminiService.getRoast(spotifyData);
+        model.addAttribute("roast",roast);
+        return "Roast";
+    }
 
 }

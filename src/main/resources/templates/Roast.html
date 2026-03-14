@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Your Roast</title>
+  <style>
+    body { font-family: Arial; background:#121212; color:white; }
+    .container { width:800px; margin:auto; padding-top:50px; }
+    .roast-box {
+      background:#1a1a1a; border-left: 4px solid #1DB954;
+      padding:30px; border-radius:10px;
+      font-size:1.2rem; line-height:1.8;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>🔥 Your Spotify Roast</h1>
+  <div class="roast-box">
+    <p th:text="${roast}"></p>
+  </div>
+</div>
+</body>
+</html>

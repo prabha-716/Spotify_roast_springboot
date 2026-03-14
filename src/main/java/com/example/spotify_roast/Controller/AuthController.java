@@ -16,6 +16,12 @@ public class AuthController {
     public String login(){
         return "login";
     }
+
+    @GetMapping("/login")
+    public String home(){
+        return "login";
+    }
+
     @GetMapping("/dashboard")
     public String dashboard(Model model, @AuthenticationPrincipal OAuth2User user){
         model.addAttribute("name",user.getAttribute("display_name"));
